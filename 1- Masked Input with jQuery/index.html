@@ -23,13 +23,13 @@
     <meta name="twitter:image" content="https://twitter.com/Devistic_Asim/photo">
 
     <!-- links -->
-    <link rel="icon" type="image/png" href="/da-white.png" />
-    <link rel="stylesheet" href="/bootstrap.min.css">
+    <link rel="icon" type="image/png" href="da-white.png" />
+    <link rel="stylesheet" href="bootstrap.min.css">
 
     <!-- styling -->
     <style>
         body {
-            background-color: #f8f9fa;
+            background-color: #242424;
         }
 
         .container {
@@ -69,6 +69,7 @@
         <div class="jumbotron">
             <h2 class="">Hello Devistics! Today, let's explore masked inputs using jQuery.</h2>
         </div>
+        <a href="/" class="btn btn btn-warning mx-2 mt-2 mb-4"> &leftarrow; Go Back</a>
         <div class="row mb-4">
             <div class="col-12 px-4">
                 <h3>Let's Get Started...</h3>
@@ -116,199 +117,203 @@
                 <h3>Want to Download Files and View the Code?</h3>
                 <hr>
                 <div class="d-flex flex-row justify-content-center flex-wrap">
-                    <a href="/bootstrap.min.css" download class="btn btn-sm btn-dark mx-2">Download Bootstrap CSS</a>
-                    <a href="/jquery.slim.min.js" download class="btn btn-sm btn-dark mx-2">Download jQuery</a>
-                    <a href="/jquery.inputmask.min.js" download class="btn btn-sm btn-dark mx-2">Download jQuery
+                    <a href="bootstrap.min.css" download class="btn btn-sm btn-dark mx-2 my-2">Download Bootstrap CSS</a>
+                    <a href="jquery.slim.min.js" download class="btn btn-sm btn-dark mx-2 my-2">Download jQuery</a>
+                    <a href="jquery.inputmask.min.js" download class="btn btn-sm btn-dark mx-2 my-2">Download jQuery
                         Inputmask</a>
-                    <a href="/bootstrap.bundle.min.js" download class="btn btn-sm btn-dark mx-2">Download Bootstrap
+                    <a href="bootstrap.bundle.min.js" download class="btn btn-sm btn-dark mx-2 my-2">Download Bootstrap
                         JS</a>
                 </div>
                 <hr>
                 <div class="d-flex flex-column justify-content-center flex-wrap overflow-auto">
-                    <button id="showCodeBtn" class="btn btn-warning mx-2 my-2">Show/Hide Code</button>
-                    <div class="codicode">
-                        <pre id="codeSnippet" style="
-                        color: wheat;
-                        display: none;
-                        background: #343a40;">
-                            <!-- code snippet goes here -->
-                            <code>
-                                &lt;-- link --&gt;
-                                &lt;link rel="stylesheet" href="/bootstrap.min.css"&gt;
-                                
-                                &lt;-- form --&gt;
-                                &lt;form&gt;
-                                    &lt;div class="form-group"&gt;
-                                        &lt;label for="CNICNo"&gt;CNIC Number&lt;/label&gt;
-                                        &lt;input type="text" class="form-control" id="CNICNo" placeholder="xxxxx-xxxxxxx-x"&gt;
-                                    &lt;/div&gt;
-                
-                                    &lt;div class="form-group"&gt;
-                                        &lt;label for="NTNNo"&gt;NTN Number&lt;/label&gt;
-                                        &lt;input type="text" class="form-control" id="NTNNo" placeholder="xxxxxxx-x"&gt;
-                                    &lt;/div&gt;
-                
-                                    &lt;div class="form-group"&gt;
-                                        &lt;label for="GSTNo"&gt;GST Number&lt;/label&gt;
-                                        &lt;input type="text" class="form-control" id="GSTNo" placeholder="xx-xxxxxxx-x"&gt;
-                                    &lt;/div&gt;
-                
-                                    &lt;div class="form-group"&gt;
-                                        &lt;label for="Phone"&gt;Phone or Landline Number&lt;/label&gt;
-                                        &lt;input type="text" class="form-control" id="Phone" placeholder="(+92) xx-xxxxxxx"&gt;
-                                    &lt;/div&gt;
-                
-                                    &lt;div class="form-group"&gt;
-                                        &lt;label for="Mobile"&gt;Mobile Number with Country Code&lt;/label&gt;
-                                        &lt;input type="text" class="form-control" id="Mobile" placeholder="(+92) 3xx-xxxxxxx"&gt;
-                                    &lt;/div&gt;
-                
-                                    &lt;div class="form-group"&gt;
-                                        &lt;label for="Mobile2"&gt;Simple Mobile Number&lt;/label&gt;
-                                        &lt;input type="text" class="form-control" id="Mobile2" placeholder="03xx-xxxxxxx"&gt;
-                                    &lt;/div&gt;
-                                    &lt;br&gt;
-                                    &lt;hr&gt;
-                                    &lt;button type="button" class="btn btn-primary mt-2 mb-4 float-right"
-                                        onclick="showThankYou()"&gt;Submit&lt;/button&gt;
-                                &lt;/form&gt;
-                                
-                                &lt;-- script src --&gt;
-                                &lt;script src="/jquery.slim.min.js"&gt;&lt;/script&gt;
-                                &lt;script src="/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
-                                &lt;script src="/jquery.inputmask.min.js"&gt;&lt;/script&gt;
-                                
-                                &lt;-- script --&gt;
-                                &lt;script type="text/javascript"&gt;
-                                   
-                                    $(document).ready(function () {
-                                        
-                                        // Apply Inputmasks here...
-                                        
-                                        $('#CNICNo').attr('data-inputmask', "'mask': '99999-9999999-9'").inputmask();
-                                        
-                                        $('#NTNNo').attr('data-inputmask', "'mask': '*******-*' , 'definitions': {'*': {'validator': '[A-Za-z0-9]'}}").inputmask();
-
-                                        $('#GSTNo').attr('data-inputmask', "'mask': '99-9999999-9'").inputmask();
-
-                                        $('#Phone').inputmask("(+\\9\\2) 99-9999999", {
-                                            "placeholder": "_",
-                                            "definitions": {
-                                                'x': {
-                                                    validator: "[0-9]",
-                                                    cardinality: 1
-                                                }
-                                            }
-                                        });
-
-                                        $('#Mobile').inputmask("(+\\9\\2) 399-9999999", {
-                                            "placeholder": "_",
-                                            "definitions": {
-                                                'x': {
-                                                    validator: "[0-9]",
-                                                    cardinality: 1
-                                                }
-                                            }
-                                        });
-
-                                        $('#Mobile2').attr('data-inputmask', "'mask': '0399-9999999'").inputmask();
-                                    });
-                            
-                                    // Show thank you message on form submission
-                                    function showThankYou() {
-                                        $('form').prepend(`&lt;div class="alert alert-success"&gt;Thank you for submitting the form!&lt;/div&gt;`);
-                                        
-                                        setTimeout(function () {
-                                            $('.alert').remove();
-                                        }, 5000);
-                                    }
-                                &lt;/script&gt;
-                                </code>
-                        </pre>
-                        <button class="btn btn-info mb-4" id="copyButton" style="display: none;">Copy Code to Clipboard</button>
+                    <div>
+                        <button id="showCodeBtn" class="btn btn-warning mx-2 my-2">Show/Hide Code</button>
                     </div>
+                    <div class="codicode">
+                        <pre class="mt-2" id="codeSnippet" style="
+                      color: wheat;
+                      display: none;
+                      background: #343a40;
+                      border-radius: 4px;">
+                          <!-- code snippet goes here -->
+                          <code>
+                              &lt;-- link --&gt;
+                              &lt;link rel="stylesheet" href="/bootstrap.min.css"&gt;
+                              
+                              &lt;-- form --&gt;
+                              &lt;form&gt;
+                                  &lt;div class="form-group"&gt;
+                                      &lt;label for="CNICNo"&gt;CNIC Number&lt;/label&gt;
+                                      &lt;input type="text" class="form-control" id="CNICNo" placeholder="xxxxx-xxxxxxx-x"&gt;
+                                  &lt;/div&gt;
+                
+                                  &lt;div class="form-group"&gt;
+                                      &lt;label for="NTNNo"&gt;NTN Number&lt;/label&gt;
+                                      &lt;input type="text" class="form-control" id="NTNNo" placeholder="xxxxxxx-x"&gt;
+                                  &lt;/div&gt;
+                
+                                  &lt;div class="form-group"&gt;
+                                      &lt;label for="GSTNo"&gt;GST Number&lt;/label&gt;
+                                      &lt;input type="text" class="form-control" id="GSTNo" placeholder="xx-xxxxxxx-x"&gt;
+                                  &lt;/div&gt;
+                
+                                  &lt;div class="form-group"&gt;
+                                      &lt;label for="Phone"&gt;Phone or Landline Number&lt;/label&gt;
+                                      &lt;input type="text" class="form-control" id="Phone" placeholder="(+92) xx-xxxxxxx"&gt;
+                                  &lt;/div&gt;
+                
+                                  &lt;div class="form-group"&gt;
+                                      &lt;label for="Mobile"&gt;Mobile Number with Country Code&lt;/label&gt;
+                                      &lt;input type="text" class="form-control" id="Mobile" placeholder="(+92) 3xx-xxxxxxx"&gt;
+                                  &lt;/div&gt;
+                
+                                  &lt;div class="form-group"&gt;
+                                      &lt;label for="Mobile2"&gt;Simple Mobile Number&lt;/label&gt;
+                                      &lt;input type="text" class="form-control" id="Mobile2" placeholder="03xx-xxxxxxx"&gt;
+                                  &lt;/div&gt;
+                                  &lt;br&gt;
+                                  &lt;hr&gt;
+                                  &lt;button type="button" class="btn btn-primary mt-2 mb-4 float-right"
+                                      onclick="showThankYou()"&gt;Submit&lt;/button&gt;
+                              &lt;/form&gt;
+                              
+                              &lt;-- script src --&gt;
+                              &lt;script src="/jquery.slim.min.js"&gt;&lt;/script&gt;
+                              &lt;script src="/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
+                              &lt;script src="/jquery.inputmask.min.js"&gt;&lt;/script&gt;
+                              
+                              &lt;-- script --&gt;
+                              &lt;script type="text/javascript"&gt;
+                                 
+                                  $(document).ready(function () {
+                                      
+                                      // Apply Inputmasks here...
+                                      
+                                      $('#CNICNo').attr('data-inputmask', "'mask': '99999-9999999-9'").inputmask();
+                                      
+                                      $('#NTNNo').attr('data-inputmask', "'mask': '*******-*' , 'definitions': {'*': {'validator': '[A-Za-z0-9]'}}").inputmask();
+
+                                      $('#GSTNo').attr('data-inputmask', "'mask': '99-9999999-9'").inputmask();
+
+                                      $('#Phone').inputmask("(+\\9\\2) 99-9999999", {
+                                          "placeholder": "_",
+                                          "definitions": {
+                                              'x': {
+                                                  validator: "[0-9]",
+                                                  cardinality: 1
+                                              }
+                                          }
+                                      });
+
+                                      $('#Mobile').inputmask("(+\\9\\2) 399-9999999", {
+                                          "placeholder": "_",
+                                          "definitions": {
+                                              'x': {
+                                                  validator: "[0-9]",
+                                                  cardinality: 1
+                                              }
+                                          }
+                                      });
+
+                                      $('#Mobile2').attr('data-inputmask', "'mask': '0399-9999999'").inputmask();
+                                  });
+                          
+                                  // Show thank you message on form submission
+                                  function showThankYou() {
+                                      $('form').prepend(`&lt;div class="alert alert-success"&gt;Thank you for submitting the form!&lt;/div&gt;`);
+                                      
+                                      setTimeout(function () {
+                                          $('.alert').remove();
+                                      }, 5000);
+                                  }
+                              &lt;/script&gt;
+                              </code>
+                      </pre>
+                        <button class="btn btn-info mb-4" id="copyButton" style="display: none;">Copy Code to
+                            Clipboard</button>
+                    </div>
+                    <di>
+                    </di>
                 </div>
+
             </div>
-        </div>
 
-    </div>
+            <!-- scripts -->
+            <script src="jquery.slim.min.js"></script>
+            <script src="bootstrap.bundle.min.js"></script>
+            <script src="jquery.inputmask.min.js"></script>
 
-    <!-- scripts -->
-    <script src="/jquery.slim.min.js"></script>
-    <script src="/bootstrap.bundle.min.js"></script>
-    <script src="/jquery.inputmask.min.js"></script>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    // Apply Inputmasks here...
+                    $('#CNICNo').attr('data-inputmask', "'mask': '99999-9999999-9'").inputmask();
+                    $('#NTNNo').attr('data-inputmask', "'mask': '*******-*' , 'definitions': {'*': {'validator': '[A-Za-z0-9]'}}").inputmask();
+                    $('#GSTNo').attr('data-inputmask', "'mask': '99-9999999-9'").inputmask();
+                    $('#Phone').inputmask("(+\\9\\2) 99-9999999", {
+                        "placeholder": "_",
+                        "definitions": {
+                            'x': {
+                                validator: "[0-9]",
+                                cardinality: 1
+                            }
+                        }
+                    });
+                    $('#Mobile').inputmask("(+\\9\\2) 399-9999999", {
+                        "placeholder": "_",
+                        "definitions": {
+                            'x': {
+                                validator: "[0-9]",
+                                cardinality: 1
+                            }
+                        }
+                    });
+                    $('#Mobile2').attr('data-inputmask', "'mask': '0399-9999999'").inputmask();
+                });
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            // Apply Inputmasks here...
-            $('#CNICNo').attr('data-inputmask', "'mask': '99999-9999999-9'").inputmask();
-            $('#NTNNo').attr('data-inputmask', "'mask': '*******-*' , 'definitions': {'*': {'validator': '[A-Za-z0-9]'}}").inputmask();
-            $('#GSTNo').attr('data-inputmask', "'mask': '99-9999999-9'").inputmask();
-            $('#Phone').inputmask("(+\\9\\2) 99-9999999", {
-                "placeholder": "_",
-                "definitions": {
-                    'x': {
-                        validator: "[0-9]",
-                        cardinality: 1
-                    }
+                // Show thank you message on form submission
+                function showThankYou() {
+                    $('form').prepend(`<div class="alert alert-success">Thank you for submitting the form!</div>`);
+                    setTimeout(function () {
+                        $('.alert').remove();
+                    }, 5000);
                 }
-            });
-            $('#Mobile').inputmask("(+\\9\\2) 399-9999999", {
-                "placeholder": "_",
-                "definitions": {
-                    'x': {
-                        validator: "[0-9]",
-                        cardinality: 1
+            </script>
+            <script type="text/javascript">
+                const showCodeBtn = document.getElementById("showCodeBtn");
+                const codeSnippet = document.getElementById("codeSnippet");
+                const btnCopy = document.getElementById("copyButton");
+
+                showCodeBtn.addEventListener("click", () => {
+                    if (codeSnippet.style.display === "none") {
+                        codeSnippet.style.display = "block";
+                        btnCopy.style.display = "block";
+                    } else {
+                        codeSnippet.style.display = "none";
+                        btnCopy.style.display = "none";
                     }
-                }
-            });
-            $('#Mobile2').attr('data-inputmask', "'mask': '0399-9999999'").inputmask();
-        });
+                });
+            </script>
+            <script type="text/javascript">
+                // Copy code to clipboard
+                document.getElementById("copyButton").addEventListener("click", function () {
+                    const codeSnippet = document.getElementById("codeSnippet");
+                    const range = document.createRange();
+                    range.selectNode(codeSnippet);
+                    window.getSelection().removeAllRanges();
+                    window.getSelection().addRange(range);
+                    document.execCommand("copy");
+                    window.getSelection().removeAllRanges();
+                    // Show success message
+                    const successMessage = document.createElement("div");
+                    successMessage.className = "alert alert-success mt-3";
+                    successMessage.textContent = "Code copied to clipboard!";
 
-        // Show thank you message on form submission
-        function showThankYou() {
-            $('form').prepend(`<div class="alert alert-success">Thank you for submitting the form!</div>`);
-            setTimeout(function () {
-                $('.alert').remove();
-            }, 5000);
-        }
-    </script>
-    <script type="text/javascript">
-        const showCodeBtn = document.getElementById("showCodeBtn");
-        const codeSnippet = document.getElementById("codeSnippet");
-        const btnCopy = document.getElementById("copyButton");
-
-        showCodeBtn.addEventListener("click", () => {
-            if (codeSnippet.style.display === "none") {
-                codeSnippet.style.display = "block";
-                btnCopy.style.display = "block";
-            } else {
-                codeSnippet.style.display = "none";
-                btnCopy.style.display = "none";
-            }
-        });
-    </script>
-    <script type="text/javascript">
-        // Copy code to clipboard
-        document.getElementById("copyButton").addEventListener("click", function() {
-            const codeSnippet = document.getElementById("codeSnippet");
-            const range = document.createRange();
-            range.selectNode(codeSnippet);
-            window.getSelection().removeAllRanges();
-            window.getSelection().addRange(range);
-            document.execCommand("copy");
-            window.getSelection().removeAllRanges();
-            // Show success message
-            const successMessage = document.createElement("div");
-            successMessage.className = "alert alert-success mt-3";
-            successMessage.textContent = "Code copied to clipboard!";
-            
-            $('.codicode').append(successMessage);
-            setTimeout(function() {
-                $('.codicode .alert').remove();
-            }, 5000);
-        });
-    </script>
+                    $('.codicode').append(successMessage);
+                    setTimeout(function () {
+                        $('.codicode .alert').remove();
+                    }, 5000);
+                });
+            </script>
 </body>
 
 </html>
