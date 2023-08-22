@@ -58,6 +58,7 @@
         }
         a{
             text-decoration: none;
+            margin: 0.5rem 0;
         }
         img{
             position: absolute;
@@ -66,6 +67,10 @@
             left: 51%;
             z-index: 0;
             transform: translate(-50%, -50%);
+        }
+        .row{
+            display: flex;
+            flex-direction: column;
         }
     </style>
 </head>
@@ -76,7 +81,10 @@
         <br>
         <h1>Welcome to Devistic Index</h1>
         <p>Choose a page to visit:</p>
-        <a class="btn" href="1-Masked-Input-with-jQuery/index.html">Mask Input with jQuery &rightarrow;</a>
+        <div class="row">
+            <a class="btn" href="1-Masked-Input-with-jQuery/index.html">Mask Input with jQuery &rightarrow;</a>
+            <a class="btn" href="2-Html-Code-Repeater/index.html">Code Copier with jQuery &rightarrow;</a>
+        </div>
     </div>
 </body>
 </html>
