@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masked Inputs with jQuery</title>
+    <!-- meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Muhammad Asim - .Net Developer | GitHub: devistic-asim">
+    <meta name="keywords" content=".Net Developer, GitHub, Muhammad Asim, devistic-asim">
+    <meta name="author" content="Muhammad Asim">
+    <meta property="og:title" content="Muhammad Asim - .Net Developer">
+    <meta property="og:description"
+        content="Passionate .Net Developer with a focus on Full-Stack development. Check out my GitHub profile: devistic-asim">
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/73778163?v=4">
+    <meta property="og:url" content="https://github.com/devistic-asim">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Muhammad Asim - .Net Developer">
+    <meta name="twitter:description"
+        content="Passionate .Net Developer with a focus on Full-Stack development. Check out my GitHub profile: devistic-asim">
+    <meta name="twitter:image" content="https://twitter.com/Devistic_Asim/photo">
+
+    <!-- links -->
+    <link rel="icon" type="image/png" href="da-white.png" />
+    <link rel="stylesheet" href="bootstrap.min.css">
+
+    <!-- styling -->
+    <style>
+        body {
+            background-color: #242424;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 10px;
+        }
+
+        .jumbotron {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h2 class="">Hello Devistics! Today, let's make a code repeater.</h2>
+        </div>
+        <a href="/" class="btn btn btn-warning mx-2 mt-2 mb-4"> &leftarrow; Go Back</a>
+        <div class="row mb-4">
+            <div class="col-12 px-4">
+                <h3>Let's Get Started...</h3>
+                <hr>
+                <form>
+                    <div class="form-group">
+                        <label for="columns">Enter your columns here (add ',' after each column without space)</label>
+                        <textarea class="form-control" id="columns"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="code_snippet">Enter your code here (write 'column' in the code where you want to add the column-name)</label>
+                        <textarea class="form-control" id="code_snippet"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="repeated_snippets">Code Snippets</label>
+                        <textarea class="form-control" id="repeated_snippets" readonly placeholder="Here the code snippets will apper"></textarea>
+                    </div>
+                    <br>
+                    <hr>
+                    <button type="button" class="btn btn-primary mt-2 mb-4 float-right"
+                        onclick="showThankYou()">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- scripts -->
+    <script src="jquery.slim.min.js"></script>
+    <script src="bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
