@@ -79,17 +79,19 @@
                         <textarea class="form-control" id="columns"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="code_snippet">Enter your code here (write 'column' in the code where you want to add the column-name)</label>
+                        <label for="code_snippet">Enter your code here (write 'column' in the code where you want to add
+                            the column-name)</label>
                         <textarea class="form-control" id="code_snippet"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="repeated_snippets">Code Snippets</label>
-                        <textarea class="form-control" id="repeated_snippets" readonly placeholder="Here the code snippets will apper"></textarea>
+                        <textarea class="form-control" id="repeated_snippets" readonly
+                            placeholder="Here the code snippets will apper"></textarea>
                     </div>
                     <br>
                     <hr>
                     <button type="button" class="btn btn-primary mt-2 mb-4 float-right"
-                        onclick="showThankYou()">Submit</button>
+                        onclick="makeSnippets()">Submit</button>
                 </form>
             </div>
         </div>
@@ -98,6 +100,36 @@
     <!-- scripts -->
     <script src="jquery.slim.min.js"></script>
     <script src="bootstrap.bundle.min.js"></script>
+
+    <script type="text/javascript">
+        function makeSnippets() {
+            // Disable the Submit button
+            var submitButton = $('.btn-primary');
+            submitButton.prop('disabled', true);
+    
+            var columns = $('#columns').val().split(',').map(function(column) {
+                return column.trim();
+            });
+    
+            var codeSnippet = $('#code_snippet').val();
+    
+            var repeatedSnippets = columns.map(function(column) {
+                return codeSnippet.replace(/column/g, column);
+            });
+    
+            $('#repeated_snippets').val(repeatedSnippets.join('\n\n'));
+    
+            // Display an alert after 1 submit
+            alert("Thank you for your submission!");
+    
+            // You can also re-enable the button after a certain time if needed
+            setTimeout(function() {
+                submitButton.prop('disabled', false);
+            }, 3000); // Re-enable after 3 seconds
+        }
+    </script>
+    
+
 
 </body>
 
