@@ -21,11 +21,9 @@
     <meta name="twitter:description"
         content="Passionate .Net Developer with a focus on Full-Stack development. Check out my GitHub profile: devistic-asim">
     <meta name="twitter:image" content="https://twitter.com/Devistic_Asim/photo">
-
     <!-- links -->
     <link rel="icon" type="image/png" href="da-white.png" />
     <link rel="stylesheet" href="bootstrap.min.css">
-
     <!-- styling -->
     <style>
         body {
@@ -106,31 +104,34 @@
             // Disable the Submit button
             var submitButton = $('.btn-primary');
             submitButton.prop('disabled', true);
-    
-            var columns = $('#columns').val().split(',').map(function(column) {
+
+            var columns = $('#columns').val().split(',').map(function (column) {
                 return column.trim();
             });
-    
+
             var codeSnippet = $('#code_snippet').val();
-    
-            var repeatedSnippets = columns.map(function(column) {
+
+            if (columns.length === 0 || codeSnippet.trim() === '') {
+                alert("Please fill in both columns and code snippet before submitting.");
+                submitButton.prop('disabled', false); // Re-enable the button
+                return;
+            }
+
+            var repeatedSnippets = columns.map(function (column) {
                 return codeSnippet.replace(/column/g, column);
             });
-    
+
             $('#repeated_snippets').val(repeatedSnippets.join('\n\n'));
-    
+
             // Display an alert after 1 submit
             alert("Thank you for your submission!");
-    
+
             // You can also re-enable the button after a certain time if needed
-            setTimeout(function() {
+            setTimeout(function () {
                 submitButton.prop('disabled', false);
             }, 3000); // Re-enable after 3 seconds
         }
     </script>
-    
-
-
 </body>
 
 </html>
