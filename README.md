@@ -23,3 +23,6 @@ Connect with me:
 * [![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?logo=Twitter&logoColor=white)](https://twitter.com/devistic_asim) 
 
 Stay curious. Stay inspired. Stay Devistic.
+
+### Working Folders:
+1. [Masked-Input-with-jQuery]([path-to-folder/Masked-Input-with-jQuery](https://devistic-asim.github.io/DailyDevistic.github.io/1-Masked-Input-with-jQuery/index.html)https://devistic-asim.github.io/DailyDevistic.github.io/1-Masked-Input-with-jQuery/index.html)
