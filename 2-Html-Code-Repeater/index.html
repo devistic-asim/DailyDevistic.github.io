@@ -58,6 +58,16 @@
             background-color: #0056b3;
             border-color: #0056b3;
         }
+
+        /* Style for the auto-resize textarea */
+        .auto-resize {
+            overflow: hidden;
+            resize: none;
+            min-height: 50px;
+            /* Set a minimum height to start */
+            height: auto;
+            /* Initial auto height */
+        }
     </style>
 </head>
 
@@ -74,17 +84,17 @@
                 <form>
                     <div class="form-group">
                         <label for="columns">Enter your columns here (add ',' after each column without space)</label>
-                        <textarea class="form-control" id="columns"></textarea>
+                        <textarea class="form-control auto-resize" id="columns" oninput="autoResize(this)"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="code_snippet">Enter your code here (write 'column' in the code where you want to add
                             the column-name)</label>
-                        <textarea class="form-control" id="code_snippet"></textarea>
+                        <textarea class="form-control auto-resize" id="code_snippet" oninput="autoResize(this)"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="repeated_snippets">Code Snippets</label>
-                        <textarea class="form-control" id="repeated_snippets" readonly
-                            placeholder="Here the code snippets will apper"></textarea>
+                        <textarea class="form-control auto-resize" id="repeated_snippets" readonly
+                            placeholder="Here the code snippets will apper" oninput="autoResize(this)"></textarea>
                     </div>
                     <br>
                     <hr>
@@ -100,6 +110,11 @@
     <script src="bootstrap.bundle.min.js"></script>
 
     <script type="text/javascript">
+        // Auto-resize textarea based on content
+        function autoResize(textarea) {
+            textarea.style.height = 'auto';
+            textarea.style.height = (textarea.scrollHeight) + 'px';
+        }
         function makeSnippets() {
             // Disable the Submit button
             var submitButton = $('.btn-primary');
@@ -122,6 +137,7 @@
             });
 
             $('#repeated_snippets').val(repeatedSnippets.join('\n\n'));
+            autoResize($('#repeated_snippets')[0]);
 
             // Display an alert after 1 submit
             alert("Thank you for your submission!");
