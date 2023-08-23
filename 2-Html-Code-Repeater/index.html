@@ -119,29 +119,30 @@
             // Disable the Submit button
             var submitButton = $('.btn-primary');
             submitButton.prop('disabled', true);
-
+    
             var columns = $('#columns').val().split(',').map(function (column) {
                 return column.trim();
             });
-
+    
             var codeSnippet = $('#code_snippet').val();
-
+    
             if (columns.length === 0 || codeSnippet.trim() === '') {
                 alert("Please fill in both columns and code snippet before submitting.");
                 submitButton.prop('disabled', false); // Re-enable the button
                 return;
             }
-
+    
             var repeatedSnippets = columns.map(function (column) {
-                return codeSnippet.replace(/column/g, column);
+                var snippetWithColumn = `<!-- ${column} -->\n${codeSnippet.replace(/column/g, column)}`;
+                return snippetWithColumn;
             });
-
+    
             $('#repeated_snippets').val(repeatedSnippets.join('\n\n'));
             autoResize($('#repeated_snippets')[0]);
-
+    
             // Display an alert after 1 submit
             alert("Thank you for your submission!");
-
+    
             // You can also re-enable the button after a certain time if needed
             setTimeout(function () {
                 submitButton.prop('disabled', false);
