@@ -76,7 +76,7 @@
         <div class="jumbotron">
             <h2 class="">Hello Devistics! Today, let's make a code repeater.</h2>
         </div>
-        <a href="/" class="btn btn btn-warning mx-2 mt-2 mb-4"> &leftarrow; Go Back</a>
+        <a class="btn btn btn-warning mx-2 mt-2 mb-4" onclick="window.history.back();"> &leftarrow; Go Back</a>
         <div class="row mb-4">
             <div class="col-12 px-4">
                 <h3>Let's Get Started...</h3>
@@ -89,7 +89,8 @@
                     <div class="form-group">
                         <label for="code_snippet">Enter your code here (write 'column' in the code where you want to add
                             the column-name)</label>
-                        <textarea class="form-control auto-resize" id="code_snippet" oninput="autoResize(this)"></textarea>
+                        <textarea class="form-control auto-resize" id="code_snippet"
+                            oninput="autoResize(this)"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="repeated_snippets">Code Snippets</label>
@@ -119,30 +120,30 @@
             // Disable the Submit button
             var submitButton = $('.btn-primary');
             submitButton.prop('disabled', true);
-    
+
             var columns = $('#columns').val().split(',').map(function (column) {
                 return column.trim();
             });
-    
+
             var codeSnippet = $('#code_snippet').val();
-    
+
             if (columns.length === 0 || codeSnippet.trim() === '') {
                 alert("Please fill in both columns and code snippet before submitting.");
                 submitButton.prop('disabled', false); // Re-enable the button
                 return;
             }
-    
+
             var repeatedSnippets = columns.map(function (column) {
                 var snippetWithColumn = `<!-- ${column} -->\n${codeSnippet.replace(/column/g, column)}`;
                 return snippetWithColumn;
             });
-    
+
             $('#repeated_snippets').val(repeatedSnippets.join('\n\n'));
             autoResize($('#repeated_snippets')[0]);
-    
+
             // Display an alert after 1 submit
             alert("Thank you for your submission!");
-    
+
             // You can also re-enable the button after a certain time if needed
             setTimeout(function () {
                 submitButton.prop('disabled', false);
