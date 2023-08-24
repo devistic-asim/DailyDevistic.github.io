@@ -124,6 +124,8 @@
                     </div>
                     <br>
                     <hr>
+                    <button class="btn btn-info mb-4 mr-2" id="copyButton" style="display: none;">Copy Code to
+                        Clipboard</button>
                     <button type="button" class="btn btn-primary mt-2 mb-4 float-right"
                         onclick="makeSnippets()">Submit</button>
                 </form>
@@ -136,6 +138,27 @@
     <script src="bootstrap.bundle.min.js"></script>
 
     <script type="text/javascript">
+
+        // Copy code to clipboard
+         document.getElementById("copyButton").addEventListener("click", function () {
+            const codeSnippet = document.getElementById("codeSnippet");
+            const range = document.createRange();
+            range.selectNode(codeSnippet);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            document.execCommand("copy");
+            window.getSelection().removeAllRanges();
+            // Show success message
+            const successMessage = document.createElement("div");
+            successMessage.className = "alert alert-success mt-3";
+            successMessage.textContent = "Code copied to clipboard!";
+
+            $('.codicode').append(successMessage);
+            setTimeout(function () {
+                $('.codicode .alert').remove();
+            }, 5000);
+        });
+
         // Auto-resize textarea based on content
         function autoResize(textarea) {
             textarea.style.height = 'auto';
@@ -221,6 +244,7 @@
             autoResize($('#repeated_snippets')[0]);
             alert("Thank you for your submission!");
 
+            $('#copyButton').show();
             setTimeout(function () {
                 submitButton.prop('disabled', false);
             }, 3000);
