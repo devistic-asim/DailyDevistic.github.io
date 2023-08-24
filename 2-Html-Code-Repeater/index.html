@@ -218,20 +218,6 @@
 
             $('#repeated_snippets').val(repeatedSnippets.join('\n\n'));
 
-            // Generating snippets based on snippet areas
-            /*var repeatedSnippets = [];
-            $('#snippet_areas textarea').each(function () {
-                var snippetType = $(this).attr('id').replace('snippet_', '');
-                var snippetContent = $(this).val();
-
-                // Generate the snippet with column names and type
-                var snippetWithColumn = `<!-- ${snippetType} -->\n${snippetContent}`;
-                repeatedSnippets.push(snippetWithColumn);
-            });
-
-            $('#repeated_snippets').val(repeatedSnippets.join('\n\n'));
-            */
-
             autoResize($('#repeated_snippets')[0]);
             alert("Thank you for your submission!");
 
