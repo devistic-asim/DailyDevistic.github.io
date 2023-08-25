@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masked Inputs with jQuery</title>
+    <!-- meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Muhammad Asim - .Net Developer | GitHub: devistic-asim">
+    <meta name="keywords" content=".Net Developer, GitHub, Muhammad Asim, devistic-asim">
+    <meta name="author" content="Muhammad Asim">
+    <meta property="og:title" content="Muhammad Asim - .Net Developer">
+    <meta property="og:description"
+        content="Passionate .Net Developer with a focus on Full-Stack development. Check out my GitHub profile: devistic-asim">
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/73778163?v=4">
+    <meta property="og:url" content="https://github.com/devistic-asim">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Muhammad Asim - .Net Developer">
+    <meta name="twitter:description"
+        content="Passionate .Net Developer with a focus on Full-Stack development. Check out my GitHub profile: devistic-asim">
+    <meta name="twitter:image" content="https://twitter.com/Devistic_Asim/photo">
+    <!-- links -->
+    <link rel="icon" type="image/png" href="da-white.png" />
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <!-- styling -->
+    <style>
+        body {
+            background-color: #242424;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 10px;
+        }
+
+        .jumbotron {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        /* Style for the auto-resize textarea */
+        .auto-resize {
+            overflow: hidden;
+            resize: none;
+            min-height: 50px;
+            /* Set a minimum height to start */
+            height: auto;
+            /* Initial auto height */
+        }
+
+        .cursor-pointer {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h2 class="">Hello Devistics! Today, let's make a code repeater.</h2>
+        </div>
+        <a class="btn btn btn-warning mx-2 mt-2 mb-4" onclick="window.history.back();"> &leftarrow; Go Back</a>
+        <div class="row mb-4">
+            <div class="col-12 px-4">
+                <h3>Let's Get Started...</h3>
+                <hr>
+                <form>
+                    <div class="form-group">
+                        <label for="columns">Enter your columns here <span class="text-muted">(add ',' after each column
+                                without space like -> column-name(input),etc.)</span> <span
+                                class="badge badge-pill badge-info cursor-pointer" onclick="addColumns()">Add
+                                Example</span></label>
+                        <textarea class="form-control auto-resize" id="columns" oninput="autoResize(this)"></textarea>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label for="code_snippet">Enter your code here (write 'column' in the code where you want to add
+                            the column-name)</label>
+                        <textarea class="form-control auto-resize" id="code_snippet"
+                            oninput="autoResize(this)"></textarea>
+                    </div> -->
+                    <div class="form-group">
+                        <label for="snippet_type">Select Snippet Type: <span
+                                class="badge badge-pill badge-info cursor-pointer" onclick="addType()">Add
+                                Example</span></label>
+                        <div class="d-flex">
+                            <select class="form-control" id="snippet_type">
+                                <option value="input">input</option>
+                                <option value="textarea">textarea</option>
+                                <option value="selectBox">selectBox</option>
+                                <option value="checkbox">checkbox</option>
+                                <option value="radioButton">radioButton</option>
+                                <option value="date">date</option>
+                            </select>
+                            <button type="button" class="btn btn-secondary btn-sm ml-3 w-25"
+                                onclick="addSnippetType()">Add Snippet Area</button>
+                        </div>
+                    </div>
+                    <div id="snippet_areas"></div>
+                    <div class="form-group">
+                        <label for="repeated_snippets">Code Snippets</label>
+                        <textarea class="form-control auto-resize" id="repeated_snippets" readonly
+                            placeholder="Here the code snippets will appear" oninput="autoResize(this)"></textarea>
+                    </div>
+                    <br>
+                    <hr>
+                    <button class="btn btn-warning mb-4 mr-2" type="button" id="copyButton" style="display: none;">Copy Code to
+                        Clipboard</button>
+                    <button type="button" class="btn btn-primary mt-2 mb-4 float-right"
+                        onclick="makeSnippets()">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- scripts -->
+    <script src="jquery.slim.min.js"></script>
+    <script src="bootstrap.bundle.min.js"></script>
+
+    <script type="text/javascript">
+
+        // Copy code to clipboard
+         document.getElementById("copyButton").addEventListener("click", function () {
+            const codeSnippet = document.getElementById("codeSnippet");
+            const range = document.createRange();
+            range.selectNode(codeSnippet);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            document.execCommand("copy");
+            window.getSelection().removeAllRanges();
+            // Show success message
+            const successMessage = document.createElement("div");
+            successMessage.className = "alert alert-success mt-3";
+            successMessage.textContent = "Code copied to clipboard!";
+
+            $('.codicode').append(successMessage);
+            setTimeout(function () {
+                $('.codicode .alert').remove();
+            }, 5000);
+        });
+
+        // Auto-resize textarea based on content
+        function autoResize(textarea) {
+            textarea.style.height = 'auto';
+            textarea.style.height = (textarea.scrollHeight) + 'px';
+        }
+
+        function addColumns() {
+            $('#columns').val(`MobileNumber(input),AlternateNumber(input),WhatsAppNum(input),EmergencyNum(input),ContPersonName(input),PersonRelation(input),EmailIDPersonal(input),EmailIDOfficial(input),ReferenceType(input),ReferenceName(input),ReferenceMobile(input),RefRelation(input),CreatedBy(date),CreationDate(date),UpdatedBy(date),UpdationDate(date)`);
+            autoResize($('#columns')[0]);
+        }
+
+        function addType() {
+            if ($('#snippet_type option:selected').prop('disabled') == true) { return false }
+            let type = $('#snippet_type').val();
+            $('#snippet_type').next().click();
+            let snippet = $('#snippet_' + type);
+            let value = `<input type="type" name="column" value="column" placeholder="enter column here" />`;
+            $(snippet).val(value);
+        }
+
+        function addSnippetType() {
+
+            if ($('#snippet_type option:selected').prop('disabled') == true) { return false }
+
+            var snippetType = $('#snippet_type').val();
+            var snippetTypeName = $('#snippet_type option:selected').text();
+            // Disable the selected option
+            $('#snippet_type option:selected').prop('disabled', true);
+
+            var newSnippetArea = `
+                <div class="form-group">
+                    <label for="snippet_${snippetType}">${snippetTypeName} Snippet <span class="text-muted">(write 'column' in the code where you want to add
+                        the column-name)</span></label>
+                    <textarea class="form-control auto-resize" id="snippet_${snippetType}" oninput="autoResize(this)"></textarea>
+                    <button type="button" class="btn btn-danger mt-2" onclick="removeSnippetArea(this)">Remove</button>
+                </div>
+            `;
+
+            $('#snippet_areas').append(newSnippetArea);
+        }
+
+        function removeSnippetArea(button) {
+            // Re-enable the previously disabled option
+            var snippetType = $(button).siblings('textarea').attr('id').replace('snippet_', '');
+            $('#snippet_type option[value="' + snippetType + '"]').prop('disabled', false);
+
+            $(button).parent().remove();
+        }
+
+        function makeSnippets() {
+            var submitButton = $('.btn-primary');
+            submitButton.prop('disabled', true);
+
+            // Validate user input here and show warning alerts if needed
+            var codeSnippet = $('#snippet_areas textarea');
+
+            var columns = $('#columns').val().split(',').map(function (column) {
+                return column.trim();
+            });
+            columns = columns.filter(x => x.length);
+
+            if (columns.length === 0 || codeSnippet.length === 0) {
+                alert("Please fill in both columns and code snippet before submitting.");
+                submitButton.prop('disabled', false); // Re-enable the button
+                return;
+            }
+
+            var repeatedSnippets = columns.map(function (column) {
+
+                let type = column.split('(')[1].replace(')', '');
+                let clm = column.split('(')[0].trim();
+
+                let snippet = $('#snippet_' + type).val();
+
+                if (snippet && snippet.length) {
+                    var snippetWithColumn = `<!-- ${clm} -->\n${snippet.replace(/column/g, clm)}`;
+                    return snippetWithColumn;
+                }
+            });
+
+            $('#repeated_snippets').val(repeatedSnippets.join('\n\n'));
+
+            autoResize($('#repeated_snippets')[0]);
+            alert("Thank you for your submission!");
+
+            $('#copyButton').show();
+            setTimeout(function () {
+                submitButton.prop('disabled', false);
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>
