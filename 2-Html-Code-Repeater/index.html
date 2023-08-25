@@ -76,7 +76,7 @@
         <div class="jumbotron">
             <h2 class="">Hello Devistics! Today, let's make a code repeater.</h2>
         </div>
-        <a class="btn btn btn-warning mx-2 mt-2 mb-4" onclick="window.history.back();"> &leftarrow; Go Back</a>
+        <a class="btn btn btn-warning mx-2 mt-2 mb-4" onclick="goBackOrToURL()"> &leftarrow; Go Back</a>
         <div class="row mb-4">
             <div class="col-12 px-4">
                 <h3>Let's Get Started...</h3>
@@ -149,6 +149,20 @@
                 submitButton.prop('disabled', false);
             }, 3000); // Re-enable after 3 seconds
         }
+    </script>
+    <script>
+    function goBackOrToURL() {
+        if (window.history.length > 1) {
+            // Go back if there is history
+            window.history.back();
+            setTimeout(function () {
+                window.location.href = 'https://devistic-asim.github.io/DailyDevistic.github.io/';
+            }, 3000);
+        } else {
+            // Navigate to a specific URL if no history
+            window.location.href = 'https://devistic-asim.github.io/DailyDevistic.github.io/';
+        }
+    }
     </script>
 </body>
 
