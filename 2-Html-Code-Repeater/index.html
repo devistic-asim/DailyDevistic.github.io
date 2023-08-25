@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Masked Inputs with jQuery</title>
+    <title>Make Snippets and Code with jQuery</title>
     <!-- meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -68,10 +68,6 @@
             height: auto;
             /* Initial auto height */
         }
-
-        .cursor-pointer {
-            cursor: pointer;
-        }
     </style>
 </head>
 
@@ -87,45 +83,22 @@
                 <hr>
                 <form>
                     <div class="form-group">
-                        <label for="columns">Enter your columns here <span class="text-muted">(add ',' after each column
-                                without space like -> column-name(input),etc.)</span> <span
-                                class="badge badge-pill badge-info cursor-pointer" onclick="addColumns()">Add
-                                Example</span></label>
+                        <label for="columns">Enter your columns here (add ',' after each column without space)</label>
                         <textarea class="form-control auto-resize" id="columns" oninput="autoResize(this)"></textarea>
                     </div>
-                    <!-- <div class="form-group">
+                    <div class="form-group">
                         <label for="code_snippet">Enter your code here (write 'column' in the code where you want to add
                             the column-name)</label>
                         <textarea class="form-control auto-resize" id="code_snippet"
                             oninput="autoResize(this)"></textarea>
-                    </div> -->
-                    <div class="form-group">
-                        <label for="snippet_type">Select Snippet Type: <span
-                                class="badge badge-pill badge-info cursor-pointer" onclick="addType()">Add
-                                Example</span></label>
-                        <div class="d-flex">
-                            <select class="form-control" id="snippet_type">
-                                <option value="input">input</option>
-                                <option value="textarea">textarea</option>
-                                <option value="selectBox">selectBox</option>
-                                <option value="checkbox">checkbox</option>
-                                <option value="radioButton">radioButton</option>
-                                <option value="date">date</option>
-                            </select>
-                            <button type="button" class="btn btn-secondary btn-sm ml-3 w-25"
-                                onclick="addSnippetType()">Add Snippet Area</button>
-                        </div>
                     </div>
-                    <div id="snippet_areas"></div>
                     <div class="form-group">
                         <label for="repeated_snippets">Code Snippets</label>
                         <textarea class="form-control auto-resize" id="repeated_snippets" readonly
-                            placeholder="Here the code snippets will appear" oninput="autoResize(this)"></textarea>
+                            placeholder="Here the code snippets will apper" oninput="autoResize(this)"></textarea>
                     </div>
                     <br>
                     <hr>
-                    <button class="btn btn-warning mb-4 mr-2" type="button" id="copyButton" style="display: none;">Copy Code to
-                        Clipboard</button>
                     <button type="button" class="btn btn-primary mt-2 mb-4 float-right"
                         onclick="makeSnippets()">Submit</button>
                 </form>
@@ -138,116 +111,43 @@
     <script src="bootstrap.bundle.min.js"></script>
 
     <script type="text/javascript">
-
-        // Copy code to clipboard
-         document.getElementById("copyButton").addEventListener("click", function () {
-            const codeSnippet = document.getElementById("codeSnippet");
-            const range = document.createRange();
-            range.selectNode(codeSnippet);
-            window.getSelection().removeAllRanges();
-            window.getSelection().addRange(range);
-            document.execCommand("copy");
-            window.getSelection().removeAllRanges();
-            // Show success message
-            const successMessage = document.createElement("div");
-            successMessage.className = "alert alert-success mt-3";
-            successMessage.textContent = "Code copied to clipboard!";
-
-            $('.codicode').append(successMessage);
-            setTimeout(function () {
-                $('.codicode .alert').remove();
-            }, 5000);
-        });
-
         // Auto-resize textarea based on content
         function autoResize(textarea) {
             textarea.style.height = 'auto';
             textarea.style.height = (textarea.scrollHeight) + 'px';
         }
-
-        function addColumns() {
-            $('#columns').val(`MobileNumber(input),AlternateNumber(input),WhatsAppNum(input),EmergencyNum(input),ContPersonName(input),PersonRelation(input),EmailIDPersonal(input),EmailIDOfficial(input),ReferenceType(input),ReferenceName(input),ReferenceMobile(input),RefRelation(input),CreatedBy(date),CreationDate(date),UpdatedBy(date),UpdationDate(date)`);
-            autoResize($('#columns')[0]);
-        }
-
-        function addType() {
-            if ($('#snippet_type option:selected').prop('disabled') == true) { return false }
-            let type = $('#snippet_type').val();
-            $('#snippet_type').next().click();
-            let snippet = $('#snippet_' + type);
-            let value = `<input type="type" name="column" value="column" placeholder="enter column here" />`;
-            $(snippet).val(value);
-        }
-
-        function addSnippetType() {
-
-            if ($('#snippet_type option:selected').prop('disabled') == true) { return false }
-
-            var snippetType = $('#snippet_type').val();
-            var snippetTypeName = $('#snippet_type option:selected').text();
-            // Disable the selected option
-            $('#snippet_type option:selected').prop('disabled', true);
-
-            var newSnippetArea = `
-                <div class="form-group">
-                    <label for="snippet_${snippetType}">${snippetTypeName} Snippet <span class="text-muted">(write 'column' in the code where you want to add
-                        the column-name)</span></label>
-                    <textarea class="form-control auto-resize" id="snippet_${snippetType}" oninput="autoResize(this)"></textarea>
-                    <button type="button" class="btn btn-danger mt-2" onclick="removeSnippetArea(this)">Remove</button>
-                </div>
-            `;
-
-            $('#snippet_areas').append(newSnippetArea);
-        }
-
-        function removeSnippetArea(button) {
-            // Re-enable the previously disabled option
-            var snippetType = $(button).siblings('textarea').attr('id').replace('snippet_', '');
-            $('#snippet_type option[value="' + snippetType + '"]').prop('disabled', false);
-
-            $(button).parent().remove();
-        }
-
         function makeSnippets() {
+            // Disable the Submit button
             var submitButton = $('.btn-primary');
             submitButton.prop('disabled', true);
-
-            // Validate user input here and show warning alerts if needed
-            var codeSnippet = $('#snippet_areas textarea');
 
             var columns = $('#columns').val().split(',').map(function (column) {
                 return column.trim();
             });
-            columns = columns.filter(x => x.length);
 
-            if (columns.length === 0 || codeSnippet.length === 0) {
+            var codeSnippet = $('#code_snippet').val();
+
+            if (columns.length === 0 || codeSnippet.trim() === '') {
                 alert("Please fill in both columns and code snippet before submitting.");
                 submitButton.prop('disabled', false); // Re-enable the button
                 return;
             }
 
             var repeatedSnippets = columns.map(function (column) {
-
-                let type = column.split('(')[1].replace(')', '');
-                let clm = column.split('(')[0].trim();
-
-                let snippet = $('#snippet_' + type).val();
-
-                if (snippet && snippet.length) {
-                    var snippetWithColumn = `<!-- ${clm} -->\n${snippet.replace(/column/g, clm)}`;
-                    return snippetWithColumn;
-                }
+                var snippetWithColumn = `<!-- ${column} -->\n${codeSnippet.replace(/column/g, column)}`;
+                return snippetWithColumn;
             });
 
             $('#repeated_snippets').val(repeatedSnippets.join('\n\n'));
-
             autoResize($('#repeated_snippets')[0]);
+
+            // Display an alert after 1 submit
             alert("Thank you for your submission!");
 
-            $('#copyButton').show();
+            // You can also re-enable the button after a certain time if needed
             setTimeout(function () {
                 submitButton.prop('disabled', false);
-            }, 3000);
+            }, 3000); // Re-enable after 3 seconds
         }
     </script>
 </body>
