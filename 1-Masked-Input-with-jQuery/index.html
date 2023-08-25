@@ -67,7 +67,7 @@
         <div class="jumbotron">
             <h2 class="">Hello Devistics! Today, let's explore masked inputs using jQuery.</h2>
         </div>
-        <a class="btn btn btn-warning mx-2 mt-2 mb-4" onclick="window.history.back();"> &leftarrow; Go Back</a>
+        <a class="btn btn btn-warning mx-2 mt-2 mb-4" onclick="goBackOrToURL()"> &leftarrow; Go Back</a>
         <div class="row mb-4">
             <div class="col-12 px-4">
                 <h3>Let's Get Started...</h3>
@@ -311,6 +311,17 @@
                 $('.codicode .alert').remove();
             }, 5000);
         });
+    </script>
+    <script>
+    function goBackOrToURL() {
+        if (window.history.length > 1) {
+            // Go back if there is history
+            window.history.back();
+        } else {
+            // Navigate to a specific URL if no history
+            window.location.href = 'https://devistic-asim.github.io/DailyDevistic.github.io/';
+        }
+    }
     </script>
 </body>
 </html>
