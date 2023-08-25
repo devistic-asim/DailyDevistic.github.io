@@ -18,7 +18,8 @@ Come along on this thrilling adventure as we voyage together through the realms 
 
 ### Working Folders:
 1. [Masked-Input-with-jQuery](https://devistic-asim.github.io/DailyDevistic.github.io/1-Masked-Input-with-jQuery/index.html) - Explore the Masked Input project.
-2. [Html-Code-Repeater](https://devistic-asim.github.io/DailyDevistic.github.io/2-Html-Code-Repeater/index.html) - Copy your Code easily with your Selected Columns.
+2. [Html-Code-Repeater](https://devistic-asim.github.io/DailyDevistic.github.io/2-Html-Code-Repeater/index.html) - Create your Snippets/Code easily with your Selected Columns.
+3. [Html-Multiple-Snippet_or_Code-maker](https://devistic-asim.github.io/DailyDevistic.github.io/2-Html-Code-Repeater/index.html) - Create your Multiple Snippets/Code easily with your Selected Columns.
 
 Connect with me:
 
