@@ -83,7 +83,10 @@
                 <hr>
                 <form>
                     <div class="form-group">
-                        <label for="columns">Enter your columns here (add ',' after each column without space)</label>
+                        <label for="columns">Enter your columns here <span class="text-muted">(add ',' after each column
+                                without space like -> column-name(input),etc.)</span> <span
+                                class="badge badge-pill badge-info cursor-pointer" onclick="addColumns()">Add
+                                Example</span></label>
                         <textarea class="form-control auto-resize" id="columns" oninput="autoResize(this)"></textarea>
                     </div>
                     <div class="form-group">
@@ -115,6 +118,10 @@
         function autoResize(textarea) {
             textarea.style.height = 'auto';
             textarea.style.height = (textarea.scrollHeight) + 'px';
+        }
+        function addColumns() {
+            $('#columns').val(`MobileNumber,AlternateNumber,WhatsappNumber,EmergencyNumber,ContactPersonName,PersonRelation,EmailIDPersonal,EmailIDOfficial,ReferenceType,ReferenceName,ReferenceMobile,RefRelation`);
+            autoResize($('#columns')[0]);
         }
         function makeSnippets() {
             // Disable the Submit button
