@@ -68,6 +68,9 @@
             height: auto;
             /* Initial auto height */
         }
+        .cursor-pointer{
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -140,15 +143,16 @@
             }
             else if(i == 2)
             {
-                value = `<div class='col-12'>
+                value = 
+                `<div class='col-12'>
                     <div class='form-group'>
                         <input type='number' name='column' id='column' value='@Model.column' step='1'>
                     </div>
                 </div>`;
                 i=0;
             } 
-            $('#code_snippet').html(value);
-            
+            $('#code_snippet').val(value);
+            autoResize($('#columns')[0]);
         }
         function makeSnippets() {
             // Disable the Submit button
