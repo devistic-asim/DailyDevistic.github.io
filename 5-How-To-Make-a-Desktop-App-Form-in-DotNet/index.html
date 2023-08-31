@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Make a Desktop App Form in .Net using VS 2019</title>
+</head>
+<body>
+    <h1>How to Make a Desktop App Form in .Net using VS 2019</h1>
+    
+    <h2>Step 1: Create a New Project</h2>
+    <p>Follow these steps to create a new desktop application project using Visual Studio 2019:</p>
+    <ol>
+        <li>Open Visual Studio 2019.</li>
+        <li>Click on "Create a new project."</li>
+        <li>Search for "Windows Forms App (.NET Framework)."</li>
+        <li>Choose a name and location for your project and click "Create."</li>
+    </ol>
+    
+    <h2>Step 2: Design the Form</h2>
+    <p>Design the user interface for your desktop app form:</p>
+    <ol>
+        <li>In the Solution Explorer, right-click on your project and select "Add" > "Windows Form."</li>
+        <li>Double-click the newly added form (Form1.cs) to open the designer.</li>
+        <li>Drag and drop the required controls onto the form: 2 TextBoxes, 4 ComboBoxes, and a Button.</li>
+        <li>Set the names and properties of the controls appropriately.</li>
+    </ol>
+    
+    <h2>Step 3: Writing Code</h2>
+    <p>Write C# code to handle form actions:</p>
+    <pre><code>
+using System;
+using System.IO;
+using System.Windows.Forms;
+
+namespace FileCopyApp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            // Code for copying the file
+        }
+    }
+}
+    </code></pre>
+    
+    <h2>Step 4: Configure ComboBoxes</h2>
+    <p>Populate the ComboBoxes with the required values in the form's constructor or "Load" event.</p>
+    
+    <h2>Step 5: Build and Run</h2>
+    <p>Build and run your application to test it:</p>
+    <ol>
+        <li>Build the solution (Ctrl + Shift + B).</li>
+        <li>Run the application (F5).</li>
+    </ol>
+    
+    <h2>Step 6: Test the Application</h2>
+    <p>Test the functionality of your application by entering input and clicking the "Submit" Button.</p>
+    
+    <p>Remember to customize the code according to your requirements and add appropriate error handling.</p>
+    
+</body>
+</html>
