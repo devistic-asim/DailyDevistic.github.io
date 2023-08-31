@@ -1,69 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How to Make a Desktop App Form in .Net using VS 2019</title>
-</head>
-<body>
-    <h1>How to Make a Desktop App Form in .Net using VS 2019</h1>
-    
-    <h2>Step 1: Create a New Project</h2>
-    <p>Follow these steps to create a new desktop application project using Visual Studio 2019:</p>
-    <ol>
-        <li>Open Visual Studio 2019.</li>
-        <li>Click on "Create a new project."</li>
-        <li>Search for "Windows Forms App (.NET Framework)."</li>
-        <li>Choose a name and location for your project and click "Create."</li>
-    </ol>
-    
-    <h2>Step 2: Design the Form</h2>
-    <p>Design the user interface for your desktop app form:</p>
-    <ol>
-        <li>In the Solution Explorer, right-click on your project and select "Add" > "Windows Form."</li>
-        <li>Double-click the newly added form (Form1.cs) to open the designer.</li>
-        <li>Drag and drop the required controls onto the form: 2 TextBoxes, 4 ComboBoxes, and a Button.</li>
-        <li>Set the names and properties of the controls appropriately.</li>
-    </ol>
-    
-    <h2>Step 3: Writing Code</h2>
-    <p>Write C# code to handle form actions:</p>
-    <pre><code>
-using System;
-using System.IO;
-using System.Windows.Forms;
-
-namespace FileCopyApp
-{
-    public partial class Form1 : Form
-    {
-        public Form1()
-        {
-            InitializeComponent();
+    <!-- meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Muhammad Asim - .Net Developer | GitHub: devistic-asim">
+    <meta name="keywords" content=".Net Developer, GitHub, Muhammad Asim, devistic-asim">
+    <meta name="author" content="Muhammad Asim">
+    <meta property="og:title" content="Muhammad Asim - .Net Developer">
+    <meta property="og:description"
+        content="Passionate .Net Developer with a focus on Full-Stack development. Check out my GitHub profile: devistic-asim">
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/73778163?v=4">
+    <meta property="og:url" content="https://github.com/devistic-asim">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Muhammad Asim - .Net Developer">
+    <meta name="twitter:description"
+        content="Passionate .Net Developer with a focus on Full-Stack development. Check out my GitHub profile: devistic-asim">
+    <meta name="twitter:image" content="https://twitter.com/Devistic_Asim/photo">
+    <!-- links -->
+    <link rel="icon" type="image/png" href="da-white.png" />
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <!-- styling -->
+    <style>
+        .cursor-pointer {
+            cursor: pointer;
         }
 
-        private void btnSubmit_Click(object sender, EventArgs e)
+        .code-section {
+            overflow: auto;
+            background: #d4d4d4;
+            font: message-box;
+            font-weight: 600;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h2 class="">Hello Devistics! Today, let's make a Desktop App (Form) in .Net using VS 2019</h2>
+        </div>
+        <a class="btn btn btn-warning mx-2 mt-2 mb-4" onclick="goBackOrToURL()"> &leftarrow; Go Back</a>
+        <div class="row mb-4">
+            <div class="col-12 px-4">
+                <h3>Let's Get Started...</h3>
+                <hr>
+
+                <h3>Step 1: Create a New Project</h3>
+                <p>Follow these steps to create a new desktop application project using Visual Studio 2019:</p>
+                <ol>
+                    <li>Open Visual Studio 2019.</li>
+                    <li>Click on "Create a new project."</li>
+                    <li>Search for "Windows Forms App (.NET Framework)."</li>
+                    <li>Choose a name and location for your project and click "Create."</li>
+                </ol>
+
+                <h3>Step 2: Design the Form</h3>
+                <p>Design the user interface for your desktop app form:</p>
+                <ol>
+                    <li>In the Solution Explorer, right-click on your project and select "Add" > "Windows Form."</li>
+                    <li>Double-click the newly added form (Form1.cs) to open the designer.</li>
+                    <li>Drag and drop the required controls onto the form: 2 TextBoxes, 4 ComboBoxes, and a Button.</li>
+                    <li>Set the names and properties of the controls appropriately.</li>
+                </ol>
+
+                <h3>Step 3: Writing Code</h3>
+                <p>Write C# code to handle form actions:</p>
+                <div class="code-section">
+                    <pre><code>
+    using System;
+    using System.IO;
+    using System.Windows.Forms;
+    
+    namespace FileCopyApp
+    {
+        public partial class Form1 : Form
         {
-            // Code for copying the file
+            public Form1()
+            {
+                InitializeComponent();
+            }
+    
+            private void btnSubmit_Click(object sender, EventArgs e)
+            {
+                string sourceDirectory = txtSourceDirectory.Text;
+                string targetDirectory = txtTargetDirectory.Text;
+                string fileName = txtFileName.Text;
+    
+                string sourceFilePath = Path.Combine(sourceDirectory, fileName);
+                string targetFilePath = Path.Combine(targetDirectory, fileName);
+    
+                try
+                {
+                    File.Copy(sourceFilePath, targetFilePath, true);
+                    MessageBox.Show("File copied successfully!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred: " + ex.Message);
+                }
+            }
         }
     }
-}
     </code></pre>
-    
-    <h2>Step 4: Configure ComboBoxes</h2>
-    <p>Populate the ComboBoxes with the required values in the form's constructor or "Load" event.</p>
-    
-    <h2>Step 5: Build and Run</h2>
-    <p>Build and run your application to test it:</p>
-    <ol>
-        <li>Build the solution (Ctrl + Shift + B).</li>
-        <li>Run the application (F5).</li>
-    </ol>
-    
-    <h2>Step 6: Test the Application</h2>
-    <p>Test the functionality of your application by entering input and clicking the "Submit" Button.</p>
-    
-    <p>Remember to customize the code according to your requirements and add appropriate error handling.</p>
-    
+                    <button class="copy-btn btn btn-dark btn-sm float-right mb-2 mr-2">📋 Copy to Clipboard</button>
+                </div>
+
+                <h3>Step 4: Configure ComboBoxes</h3>
+                <p>Populate the ComboBoxes with the required values in the form's constructor or "Load" event.</p>
+
+                <h3>Step 5: Build and Run</h3>
+                <p>Build and run your application to test it:</p>
+                <ol>
+                    <li>Build the solution (Ctrl + Shift + B).</li>
+                    <li>Run the application (F5).</li>
+                </ol>
+
+                <h3>Step 6: Test the Application</h3>
+                <p>Test the functionality of your application by entering input and clicking the "Submit" Button.</p>
+
+                <p>Remember to customize the code according to your requirements and add appropriate
+                    error handling. Thank you</p>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+        aria-labelledby="myModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLongTitle">Thank you!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Code Copied to Clipboard!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- scripts -->
+    <script src="jquery.slim.min.js"></script>
+    <script src="bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+        // Copy code to clipboard
+        $(document).ready(function () {
+            $(".copy-btn").click(function () {
+                let btn = $(this);
+                var codeContent = $(btn).closest(".code-section").find('code').text();
+                var tempTextArea = $("<textarea>");
+                tempTextArea.val(codeContent).css("opacity", "0");
+                $("body").append(tempTextArea);
+                tempTextArea.select();
+                document.execCommand("copy");
+                tempTextArea.remove();
+
+                // Show custom alert
+                $('#myModal').modal('show');
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        // Go Back function
+        function goBackOrToURL() {
+            if (window.history.length > 1) {
+                // Go back if there is history
+                window.history.back();
+                setTimeout(function () {
+                    window.location.href = 'https://devistic-asim.github.io/DailyDevistic.github.io/';
+                }, 3000);
+            } else {
+                // Navigate to a specific URL if no history
+                window.location.href = 'https://devistic-asim.github.io/DailyDevistic.github.io/';
+            }
+        }
+    </script>
+
+
 </body>
+
 </html>
