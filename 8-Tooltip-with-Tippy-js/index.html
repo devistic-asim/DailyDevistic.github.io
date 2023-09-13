@@ -23,15 +23,13 @@
     <meta name="twitter:image" content="https://twitter.com/Devistic_Asim/photo">
 
     <!-- ref:https://atomiks.github.io/tippyjs/v6/animations/ -->
-    <!-- links -->
     <link rel="icon" type="image/png" href="da-white.png" />
+    <!-- links -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="bootstrap.min.css">
 
     <!-- tippy css -->
-    <link rel="stylesheet" href="unpkg.com_tippy.js_6.3.7_dist_tippy.css">
-    <link rel="stylesheet" href="unpkg.com_tippy.js_6.3.7_animations_scale.css">
-    <link rel="stylesheet" href="unpkg.com_tippy.js@6.3.7_themes_light.css">
+    <link rel="stylesheet" href="tippy.css">
 
     <!-- styling -->
     <style>
@@ -128,99 +126,115 @@
 
                 <div class="code-section">
                     <pre><code class="text-white">
-    &lt;style type="text/css"&gt;
-        .tooltip-wrapper {
-            display: flex;
-        }
+    &lt;!-- links --&gt;
+    &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"&gt;
+    &lt;link rel="stylesheet" href="bootstrap.min.css"&gt;
 
-        .tooltip-text {
-            display: block;
-            position: relative;
-            font-size: 1em;
-            border-radius: 100%;
-            color: #FFF;
-            height: 0;
-            margin-left: 6px;
-            margin-right: 6px;
-        }
+    &lt;!-- tippy css --&gt;
+    &lt;link rel="stylesheet" href="tippy.css"&gt;
 
-        .tooltip-text:before,
-        .tooltip-text:after {
-            position: absolute;
-            content: '';
-            opacity: 0;
-            transition: all 0.4s ease;
-        }
-
-        .tooltip-text:before {
-            border-width: 10px 8px 0 8px;
-            border-style: solid;
-            border-color: #ffc107 transparent transparent transparent;
-            top: -10px;
-            transform: translateY(20px);
-        }
-
-        .tooltip-text:after {
-            content: attr(data-tooltip);
-            position: relative;
-            background: #ffc107;
-            height: auto;
-            font-size: 0.9em;
-            font-weight: 500;
-            top: -2.5rem;
-            left: -1.4rem;
-            padding: 10px;
-            border-radius: 5px;
-            letter-spacing: 1px;
-            transform: translateY(20px);
-            visibility: hidden;
-        }
-
-        .tooltip-text:hover::before,
-        .tooltip-text:hover::after {
-            opacity: 1;
-            transform: translateY(-2px);
-        }
-
-        .tooltip-text:hover::after {
-            position: relative;
-            visibility: visible;
-        }
-    &lt;/style&gt;
-
-    ------------------------------- html -------------------------------
+    &lt;!-- form --&gt;
     &lt;form&gt;
         &lt;div class="form-group"&gt;
             &lt;label for="exampleInputEmail1" class="tooltip-wrapper"&gt;Email address
-                &lt;span class="tooltip-text" data-tooltip="Email should be valid!"&gt;
-                    &lt;i class="fa fa-info-circle text-primary"&gt;&lt;/i&gt;
-                &lt;/span&gt;
+                &lt;i class="ml-2 fa fa-info-circle text-primary my-tooltip"
+                    data-tooltip="Email should be valid!"&gt;&lt;/i&gt;
             &lt;/label&gt;
             &lt;input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"&gt;
-            &lt;small id="emailHelp" class="form-text text-muted"&gt;We'll never share your email with anyone else.&lt;/small&gt;
+            &lt;small id="emailHelp" class="form-text text-muted"&gt;We'll never share your email with anyone
+                else.&lt;/small&gt;
         &lt;/div&gt;
         &lt;div class="form-group"&gt;
             &lt;label for="exampleInputPassword1" class="tooltip-wrapper"&gt;Password
-                &lt;span class="tooltip-text"
-                    data-tooltip="Password should be consist of 8 letters and atleast 1 special character!"&gt;
-                    &lt;i class="fa fa-info-circle text-primary"&gt;&lt;/i&gt;
-                &lt;/span&gt;
+                &lt;i class="ml-2 fa fa-info-circle text-primary my-tooltip"
+                    data-tooltip="Password should be consist of 8 letters and atleast 1 special character!"&gt;&lt;/i&gt;
             &lt;/label&gt;
             &lt;input type="password" class="form-control" id="exampleInputPassword1"&gt;
+        &lt;/div&gt;
+        &lt;div class="form-group"&gt;
+            &lt;label for="exampleInputLongTooltip1" class="tooltip-wrapper"&gt;Long Tooltip
+                &lt;i class="ml-2 fa fa-info-circle text-primary my-tooltip"
+                    data-tooltip="Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum quasi ut non 
+                    labore voluptas odit! Fugiat quaerat recusandae, ut eos accusantium ipsum. Enim numquam cumque
+                     consequuntur provident doloremque rerum dicta!"&gt;&lt;/i&gt;
+            &lt;/label&gt;
+            &lt;input type="LongTooltip" class="form-control" id="exampleInputLongTooltip1"&gt;
         &lt;/div&gt;
         &lt;div class="form-group form-check"&gt;
             &lt;input type="checkbox" class="form-check-input" id="exampleCheck1"&gt;
             &lt;label class="form-check-label tooltip-wrapper" for="exampleCheck1"&gt;Check me out
-                &lt;span class="tooltip-text" data-tooltip="Check for remember credentials!"&gt;
-                    &lt;i class="fa fa-info-circle text-primary"&gt;&lt;/i&gt;
-                &lt;/span&gt;
+                &lt;i class="ml-2 fa fa-info-circle text-primary my-tooltip"
+                    data-tooltip="Check for remember credentials!"&gt;&lt;/i&gt;
             &lt;/label&gt;
         &lt;/div&gt;
         &lt;button type="submit" class="btn btn-primary"&gt;Submit&lt;/button&gt;
     &lt;/form&gt;
 
+    &lt;!-- scripts --&gt;
+    &lt;script src="jquery.slim.min.js"&gt;&lt;/script&gt;
+    &lt;script src="bootstrap.bundle.min.js"&gt;&lt;/script&gt;
+
+    &lt;!-- tippy js --&gt;
+    &lt;script src="popper.min.js"&gt;&lt;/script&gt;
+    &lt;script src="tippy-bundle.umd.min.js"&gt;&lt;/script&gt;
+
+    &lt;!-- js code --&gt;
+    &lt;script type="text/javascript"&gt;
+        /* Tooltip initalization */
+
+        /* Placement of the tooltip */
+        let placement = "top";
+        //let placement = "top-start";
+        //let placement = "top-end";
+        //let placement = "right";
+        //let placement = "right-start";
+        //let placement = "right-end";
+        //let placement = "bottom";
+        //let placement = "bottom-start";
+        //let placement = "bottom-end";
+        //let placement = "left";
+        //let placement = "left-start";
+        //let placement = "left-end";
+
+        /* Arrows of the tooltip */
+        //let arrow = "Default";
+        //let arrow = "Round";
+        //let arrow = "Large";
+        //let arrow = "Small";
+        //let arrow = "Wide";
+        let arrow = "Narrow";
+
+        /* Theme of the tooltip */
+        //let theme = "light";
+        //let theme = "light-border";
+        //let theme = "material";
+        let theme = "translucent";
+
+        /* Interactive tooltip */
+        let interactive = false;
+
+        /* Interactive tooltip */
+        let animation = 'scale';
+        //let animation= 'shift-away';
+        //let animation= 'shift-toward';
+        //let animation= 'perspective';
+
+        $('.my-tooltip').each(function (idx, icon) {
+            let content = $(icon).data('tooltip');
+            tippy(icon, {
+                content: content,
+                placement: placement,
+                arrow: true,
+                theme: theme,
+                interactive: interactive,
+                animation: animation,
+            });
+        });
+    &lt;/script&gt;
+
     </code></pre>
-                    <button class="copy-btn btn btn-light btn-sm float-right mb-2 mr-2">📋 Copy to Clipboard</button>
+                    <button class="btn btn-light btn-sm float-left mb-2 mr-2 download-btn"><i class="fa fa-download text-primary"></i> Download Resources</button>
+                    <button class="btn btn-light btn-sm float-right mb-2 mr-2 copy-btn"><i class="fa fa-clipboard text-primary"></i> Copy to Clipboard</button>
                 </div>
             </div>
         </div>
@@ -249,10 +263,11 @@
     <!-- scripts -->
     <script src="jquery.slim.min.js"></script>
     <script src="bootstrap.bundle.min.js"></script>
+    <script src="jszip.min.js"></script>
 
     <!-- tippy js -->
-    <script src="unpkg.com__popperjs_core_2.11.8_dist_umd_popper.min.js"></script>
-    <script src="unpkg.com_tippy.js_6.3.7_dist_tippy-bundle.umd.min.js"></script>
+    <script src="popper.min.js"></script>
+    <script src="tippy-bundle.umd.min.js"></script>
 
     <script type="text/javascript">
         /* Tooltip initalization */
@@ -286,10 +301,10 @@
         let theme = "translucent";
 
         /* Interactive tooltip */
-        let interactive= false;
+        let interactive = false;
 
         /* Interactive tooltip */
-        let animation= 'scale';
+        let animation = 'scale';
         //let animation= 'shift-away';
         //let animation= 'shift-toward';
         //let animation= 'perspective';
@@ -307,6 +322,40 @@
         });
     </script>
 
+    <script type="text/javascript">
+        // Function to create a zip file and trigger the download.
+        function downloadZip() {
+            debugger
+            // Initialize JSZip.
+            var zip = new JSZip();
+
+            // Define the folder path and files to include.
+            var folderPath = '';
+            var filesToInclude = ['bootstrap.min.css','tippy.css','bootstrap.bundle.min.js','jquery.slim.min.js', 'popper.min.js', 'tippy-bundle.umd.min.js']; // Replace with your file names.
+
+            // Add files to the zip.
+            for (var i = 0; i < filesToInclude.length; i++) {
+                var fileName = filesToInclude[i];
+                var fileContent = '' + fileName; // Replace with your file content.
+
+                zip.file(fileName, fileContent);
+            }
+
+            // Generate the zip file.
+            zip.generateAsync({ type: 'blob' }).then(function (content) {
+                // Create a download link.
+                var a = document.createElement('a');
+                a.href = URL.createObjectURL(content);
+                a.download = 'devistic-resources.zip';
+
+                // Trigger the download.
+                a.click();
+            });
+        }
+
+        // Attach the download function to the button click event.
+        $('.download-btn').click(function(){downloadZip()});
+    </script>
     <script type="text/javascript">
         // Copy code to clipboard
         $(document).ready(function () {
