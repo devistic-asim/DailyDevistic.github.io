@@ -1,18 +1,343 @@
 <!DOCTYPE html>
-<html dir="ltr" mozdisallowselectionprint>
+<html lang="en" dir="ltr" mozdisallowselectionprint>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="google" content="notranslate">
     <title>PDF.js viewer</title>
-    <!-- https://viewerjs.org/instructions/ -->
+
+    <!-- meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Muhammad Asim - .Net Developer | GitHub: devistic-asim">
+    <meta name="keywords" content=".Net Developer, GitHub, Muhammad Asim, devistic-asim">
+    <meta name="author" content="Muhammad Asim">
+    <meta property="og:title" content="Muhammad Asim - .Net Developer">
+    <meta property="og:description"
+        content="Passionate .Net Developer with a focus on Full-Stack development. Check out my GitHub profile: devistic-asim">
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/73778163?v=4">
+    <meta property="og:url" content="https://github.com/devistic-asim">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Muhammad Asim - .Net Developer">
+    <meta name="twitter:description"
+        content="Passionate .Net Developer with a focus on Full-Stack development. Check out my GitHub profile: devistic-asim">
+    <meta name="twitter:image" content="https://twitter.com/Devistic_Asim/photo">
+    <meta name="google" content="notranslate">
+
+    <!-- ref: https://viewerjs.org/instructions/ -->
+    <link rel="icon" type="image/png" href="da-white.png" />
+    <!-- links -->
+    <link rel="stylesheet" href="font-awesome.5.15.3.all.min.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+
+    <!-- styling -->
+    <style>
+        body {
+            background-color: #242424;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 10px;
+        }
+
+        .jumbotron {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .cursor-pointer {
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Hello Devistic</h1>
-    <a type="button" style="width: 10rem; background-color: gray; border-radius: 4px; text-decoration: none; padding: 1rem; color:white;" href="ViewerJS/#../sample.pdf">Show PDF</a>
-    or Iframe
-    <iframe src = "ViewerJS/#../sample.pdf" width='400' height='300' allowfullscreen webkitallowfullscreen></iframe>
+    <div class="container">
+        <div class="jumbotron">
+            <h2 class="">Hello Devistics! Let's show a PDF file with PDF Viewer in a modal or popup.</h2>
+        </div>
+        <a class="btn btn btn-warning mx-2 mt-2 mb-4" onclick="goBackOrToURL()"> &leftarrow; Go Back</a>
+        <div class="row mb-4">
+            <div class="col-12 px-4">
+                <h3>Let's Get Started...</h3>
+                <hr>
+                <a class="btn btn btn-primary" type="button" data-toggle="modal" data-target="#pdfModal"
+                    data-url="/sample.pdf">Show
+                    PDF</a>
+            </div>
+        </div>
+        <div class="row mb-4 bg-dark rounded py-4">
+            <div class="col-12 px-4 text-white">
+                <h3>Code for PDF Viewer in Bootstrap Modal (Please Download ViewerJS from repository)</h3>
+                <hr class="bg-white">
+
+                <div class="code-section">
+                    <pre><code class="text-white">
+         &lt;!DOCTYPE html&gt;
+         &lt;html dir="ltr" mozdisallowselectionprint&gt;
+         &lt;head&gt;
+             &lt;meta charset="utf-8"&gt;
+             &lt;meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"&gt;
+             &lt;meta name="google" content="notranslate"&gt;
+             &lt;title&gt;PDF.js viewer &lt;/title&gt;
+             &lt;link rel="icon" type="image/png" href="da-white.png" /&gt;
+             &lt;!-- links --&gt;
+             &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"&gt;
+             &lt;link rel="stylesheet" href="bootstrap.min.css"&gt;
+             &lt;!-- ref: https://viewerjs.org/instructions/ --&gt;
+         &lt;/head&gt;
+        
+         &lt;body&gt;
+             &lt;h1&gt;Hello Devistic &lt;/h1&gt;
+             &lt;a type="button" style="width: 10rem; background-color: gray; border-radius: 4px; text-decoration: none; padding: 1rem; color:white;" data-toggle="modal" data-target="#pdfModal"&gt;Show PDF &lt;/a&gt;
+        
+             &lt;!-- Bootstrap Modal --&gt;
+             &lt;div class="modal fade" id="pdfModal" tabindex="-1" role="dialog" aria-labelledby="pdfModalLabel" aria-hidden="true"&gt;
+                 &lt;div class="modal-dialog modal-lg"&gt;
+                     &lt;div class="modal-content"&gt;
+                         &lt;div class="modal-header"&gt;
+                             &lt;h5 class="modal-title" id="pdfModalLabel"&gt;PDF Viewer &lt;/h5&gt;
+                             &lt;button type="button" class="close" data-dismiss="modal" aria-label="Close"&gt;
+                                 &lt;span aria-hidden="true"&gt;&times; &lt;/span&gt;
+                             &lt;/button&gt;
+                         &lt;/div&gt;
+                         &lt;div class="modal-body"&gt;
+                             &lt;iframe id="pdfIframe" width="100%" height="500"&gt; &lt;/iframe&gt;
+                         &lt;/div&gt;
+                     &lt;/div&gt;
+                 &lt;/div&gt;
+             &lt;/div&gt;
+        
+             &lt;!-- scripts --&gt;
+             &lt;script src="jquery.slim.min.js"&gt; &lt;/script&gt;
+             &lt;script src="bootstrap.bundle.min.js"&gt; &lt;/script&gt;
+         &lt;/body&gt;
+         &lt;/html&gt;
+                     </code> </pre>
+                    <button class="btn btn-light btn-sm float-left mb-2 mr-2 download-btn"> <i
+                            class="fa fa-download text-primary"> </i> Download Resources </button>
+                    <button class="btn btn-light btn-sm float-right mb-2 mr-2 copy-btn"> <i
+                            class="fa fa-clipboard text-primary"> </i> Copy to Clipboard </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- PDF Modal -->
+    <div class="modal fade" id="pdfModal" tabindex="-1" role="dialog" aria-labelledby="pdfModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="pdfModalLabel">PDF Viewer</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <iframe id="pdfIframe" width="100%" height="600"></iframe>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thank you Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLongTitle">Thank you!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Code Copied to Clipboard!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- scripts -->
+    <script src="jquery.slim.min.js"></script>
+    <script src="bootstrap.bundle.min.js"></script>
+    <script src="jszip.min.js"></script>
+
+    <!-- modal script -->
+    <script type="text/javascript">
+        $('#pdfModal').on('show.bs.modal', function () {
+            var pdfUrl = 'ViewerJS/#../sample.pdf'; // Specify the URL or path to your PDF file
+            $('#pdfIframe').attr('src', pdfUrl);
+        });
+    </script>
+    <!-- Function to create a zip file and trigger the download. -->
+    <script type="text/javascript">
+        async function downloadZip() {
+            // Initialize JSZip.
+            var zip = new JSZip();
+
+            // Define the folder path and files to include.
+            var folderPath = '';
+            var filesToInclude = [
+                'bootstrap.min.css',
+                'bootstrap.bundle.min.js',
+                'jquery.slim.min.js',
+                'font-awesome.5.15.3.all.min.css',
+            ]; // Replace with your file names.
+
+            // Function to add a file to the zip with its content.
+            function addFileToZip(fileName, fileContent) {
+                zip.file(fileName, fileContent);
+            }
+
+            // Function to load file content and then add it to the zip.
+            async function loadAndAddFile(fileName) {
+                try {
+                    const response = await fetch(folderPath + fileName);
+                    if (response.ok) {
+                        const fileContent = await response.text(); // Assuming the files are text-based.
+                        // Add the loaded content to the zip.
+                        addFileToZip(fileName, fileContent);
+                    } else {
+                        throw new Error('Network response was not ok.');
+                    }
+                } catch (error) {
+                    console.error('Error loading file:', error);
+                }
+            }
+
+            // Use Promise.all to load all files concurrently.
+            await Promise.all(filesToInclude.map(fileName => loadAndAddFile(fileName)));
+
+            // Add the "webfonts" folder and its contents to the zip.
+            var webfontsFolderPath = 'webfonts/'; // Adjust the folder path as needed.
+            var webfontsFilesToInclude = [
+                'fa-brands-400.eot',
+                'fa-brands-400.svg',
+                "fa-brands-400.eot",
+                "fa-brands-400.eot?#iefix",
+                "fa-brands-400.woff2",
+                "fa-brands-400.woff",
+                "fa-brands-400.ttf",
+                "fa-brands-400.svg#fontawesome",
+                "fa-regular-400.eot",
+                "fa-regular-400.eot?#iefix",
+                "fa-regular-400.woff2",
+                "fa-regular-400.woff",
+                "fa-regular-400.ttf",
+                "fa-regular-400.svg#fontawesome",
+                "fa-solid-900.eot",
+                "fa-solid-900.eot?#iefix",
+                "fa-solid-900.woff2",
+                "fa-solid-900.woff",
+                "fa-solid-900.ttf",
+                "fa-solid-900.svg#fontawesome",
+                // Add more webfonts files as needed.
+            ];
+
+            // Function to add a file from the "webfonts" folder to the zip.
+            async function addWebfontFileToZip(fileName, fileContent) {
+                zip.file(webfontsFolderPath + fileName, fileContent);
+            }
+
+            // Function to load webfonts file content and then add it to the zip.
+            async function loadAndAddWebfontFile(fileName) {
+                try {
+                    const response = await fetch(folderPath + webfontsFolderPath + fileName);
+                    if (response.ok) {
+                        const fileContent = await response.arrayBuffer();
+                        // Add the loaded content to the zip.
+                        addWebfontFileToZip(fileName, fileContent);
+                    } else {
+                        throw new Error('Network response was not ok.');
+                    }
+                } catch (error) {
+                    console.error('Error loading webfonts file:', error);
+                }
+            }
+
+            // Use Promise.all to load and add all webfonts files concurrently.
+            await Promise.all(webfontsFilesToInclude.map(fileName => loadAndAddWebfontFile(fileName)));
+
+            // Generate the zip file.
+            const content = await zip.generateAsync({ type: 'blob' });
+
+            // Create a download link.
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(content);
+            a.download = 'devistic-resources.zip';
+
+            // Trigger the download.
+            a.click();
+        }
+
+        // Attach the download function to the button click event.
+        $('.download-btn').click(function () {
+            downloadZip();
+        });
+
+    </script>
+    <!-- Copy code to clipboard -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".copy-btn").click(function () {
+                let btn = $(this);
+                var codeContent = $(btn).closest(".code-section").find('code').text();
+                var tempTextArea = $("<textarea>");
+                tempTextArea.val(codeContent).css("opacity", "0");
+                $("body").append(tempTextArea);
+                tempTextArea.select();
+                document.execCommand("copy");
+                tempTextArea.remove();
+
+                // Show custom alert
+                $('#myModal').modal('show');
+            });
+        });
+    </script>
+    <!-- go back to previous page -->
+    <script>
+        function goBackOrToURL() {
+            if (window.history.length > 1) {
+                // Go back if there is history
+                window.history.back();
+                setTimeout(function () {
+                    window.location.href = 'https://devistic-asim.github.io/DailyDevistic.github.io/';
+                }, 3000);
+            } else {
+                // Navigate to a specific URL if no history
+                window.location.href = 'https://devistic-asim.github.io/DailyDevistic.github.io/';
+            }
+        }
+    </script>
 </body>
 
 </html>

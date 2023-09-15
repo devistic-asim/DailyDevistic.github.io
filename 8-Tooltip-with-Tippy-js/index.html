@@ -322,39 +322,55 @@
         });
     </script>
 
+    <!-- Function to create a zip file and trigger the download. -->
     <script type="text/javascript">
-        // Function to create a zip file and trigger the download.
-        function downloadZip() {
-            debugger
+
+        async function downloadZip() {
             // Initialize JSZip.
             var zip = new JSZip();
-
+        
             // Define the folder path and files to include.
             var folderPath = '';
             var filesToInclude = ['bootstrap.min.css','tippy.css','bootstrap.bundle.min.js','jquery.slim.min.js', 'popper.min.js', 'tippy-bundle.umd.min.js']; // Replace with your file names.
 
-            // Add files to the zip.
-            for (var i = 0; i < filesToInclude.length; i++) {
-                var fileName = filesToInclude[i];
-                var fileContent = '' + fileName; // Replace with your file content.
-
+            // Function to add a file to the zip with its content.
+            function addFileToZip(fileName, fileContent) {
                 zip.file(fileName, fileContent);
             }
-
+        
+            // Function to load file content and then add it to the zip.
+            async function loadAndAddFile(fileName) {
+                try {
+                    const response = await fetch(folderPath + fileName);
+                    if (response.ok) {
+                        const fileContent = await response.text(); // Assuming the files are text-based.
+                        // Add the loaded content to the zip.
+                        addFileToZip(fileName, fileContent);
+                    } else {
+                        throw new Error('Network response was not ok.');
+                    }
+                } catch (error) {
+                    console.error('Error loading file:', error);
+                }
+            }
+        
+            // Use Promise.all to load all files concurrently.
+            await Promise.all(filesToInclude.map(fileName => loadAndAddFile(fileName)));
+        
             // Generate the zip file.
-            zip.generateAsync({ type: 'blob' }).then(function (content) {
-                // Create a download link.
-                var a = document.createElement('a');
-                a.href = URL.createObjectURL(content);
-                a.download = 'devistic-resources.zip';
-
-                // Trigger the download.
-                a.click();
-            });
+            const content = await zip.generateAsync({ type: 'blob' });
+        
+            // Create a download link.
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(content);
+            a.download = 'devistic-resources.zip';
+        
+            // Trigger the download.
+            a.click();
         }
-
+        
         // Attach the download function to the button click event.
-        $('.download-btn').click(function(){downloadZip()});
+        $('.download-btn').click(function () { downloadZip() });
     </script>
     <script type="text/javascript">
         // Copy code to clipboard
